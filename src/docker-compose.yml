@@ -1,0 +1,25 @@
+services:
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+
+    restart: unless-stopped
+
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - net
+
+
+volumes:
+  mariadb_data:
+  wordpress_data:
+
+networks:
+  net:
