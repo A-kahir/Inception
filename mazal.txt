@@ -1,0 +1,5 @@
+nginx; ssl(darouuury under the hood)
+docker network (types)
+volumesss types
+
+wp , under the hoood
