@@ -3,7 +3,7 @@ set -e
 
 if [! -d "/var/lib/mysql"]
     then
-    echo "=> Intializing MariaDB"
+    echo "=> Intializing MariaDB... <="
     mariadb-install-db -datadir=/var/lib/mysql
     mysql_safe --skip-networking &
     pid="$!"
@@ -20,7 +20,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
 FLUSH PRIVILEGES;
 delim
 
-    mysqladmin -u root -p"${MYSQL_ROOT_PASSWORD}" shudown
+    mysqladmin -u root -p"${MYSQL_ROOT_PASSWORD}" shutdown
     wait "$pid"
 fi
 

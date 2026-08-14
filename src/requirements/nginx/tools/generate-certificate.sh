@@ -14,6 +14,5 @@ if [ ! -f /etc/nginx/ssl/server.crt ] || [ ! -f /etc/nginx/ssl/server.key ]
             -x509 \
             -key /etc/nginx/ssl/server.key \
             -out /etc/nginx/ssl/server.crt \
-            -days 365 \
-            -subj "/C=MA/ST=Beni-Mellal-Khenifra/L=Khouribga/O=1337/OU=Inception/CN=localhost"
+            -days 365
 fi
