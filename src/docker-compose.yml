@@ -8,13 +8,17 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     networks:
-      - inception
+      - inception_net
     volumes:
       - mariadb_data:/var/lib/mysql
+    restart:
+      -unless-stopped
 
   wordpress:
     build:
       context: ./requirements/wordpress
+    depends_on:
+      - mariadb
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
@@ -26,28 +30,41 @@ services:
       WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD}
       WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
     networks:
-      - inception
+      - inception_net
     volumes:
       - wordpress_data:/var/www/html
-    depends_on:
-      - mariadb
+    restart:
+      -unless-stopped
 
   nginx:
     build:
       context: ./requirements/nginx
+    depends_on:
+      - wordpress
     networks:
-      - inception
+      - inception_net
     volumes:
       - wordpress_data:/var/www/html
     ports:
       - "443:443"
-    depends_on:
-      - wordpress
+    restart:
+      -unless-stopped
 
 networks:
-  inception:
+  inception_net:
     driver: bridge
 
 volumes:
   mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/akahir/data/mariadb
+
   wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/akahir/data/wordpress
