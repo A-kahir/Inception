@@ -1,3 +1,31 @@
-up:
-	docker compose -f srcs/docker-compose.yml up --build
+NAME = inception
+COMPOSE = docker compose -f srcs/docker-compose.yml
 
+all:
+	$(COMPOSE) up -d --build
+
+build:
+	$(COMPOSE) build
+
+up:
+	$(COMPOSE) up -d
+
+down:
+	$(COMPOSE) down
+
+stop:
+	$(COMPOSE) stop
+
+start:
+	$(COMPOSE) start
+
+clean:
+	$(COMPOSE) down
+
+fclean:
+	$(COMPOSE) down -v --rmi all
+	docker system prune -af
+
+re: fclean all
+
+.PHONY: all build up down stop start clean fclean re
