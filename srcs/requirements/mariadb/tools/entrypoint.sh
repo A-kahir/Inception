@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 
-if [! -d "/var/lib/mysql"]
+if [ ! -d "/var/lib/mysql" ]
     then
     echo "=> Intializing MariaDB... <="
-    mariadb-install-db -datadir=/var/lib/mysql
+    mariadb-install-db --datadir=/var/lib/mysql
     mysql_safe --skip-networking &
     pid="$!"
     until mariadb-admin ping --silent;
