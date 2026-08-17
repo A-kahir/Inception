@@ -60,11 +60,11 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/akahir/data/mariadb
+      device: /home/vboxuser/data/mariadb
 
   wordpress_data:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/akahir/data/wordpress
+      device: /home/vboxuser/data/wordpress

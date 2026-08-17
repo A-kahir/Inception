@@ -1,4 +1,4 @@
-nginx; ssl(darouuury under the hood)
+nginx; ssl(darouuury under the hood), how the signing is done .
 docker network (types)
 volumesss types
 
