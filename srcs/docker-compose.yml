@@ -68,3 +68,4 @@ volumes:
       type: none
       o: bind
       device: /home/vboxuser/data/wordpress
+
