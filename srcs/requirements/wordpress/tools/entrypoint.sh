@@ -24,6 +24,7 @@ if [ ! -f "/var/www/html/wp-config.php" ]
             --path=/var/www/html
 
         wp core install \
+            --allow-root \
             --url="$WP_URL" \
             --title="$WP_TITLE" \
             --admin_user="$WP_ADMIN_USER" \

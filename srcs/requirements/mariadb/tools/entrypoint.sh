@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [ ! -d "/var/lib/mysql" ]
+if [ ! -d "/var/lib/mysql/mysql" ]
     then
     echo "=> Intializing MariaDB... <="
     mariadb-install-db --datadir=/var/lib/mysql
@@ -20,8 +20,8 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
 FLUSH PRIVILEGES;
 delim
 
-    mysqladmin -u root -p"${MYSQL_ROOT_PASSWORD}" shutdown
+    mariadb-admin -u root -p"${MYSQL_ROOT_PASSWORD}" shutdown
     wait "$pid"
 fi
 
-exec mysqld_safe
+exec mysql_safe
