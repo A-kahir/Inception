@@ -14,9 +14,11 @@ until mariadb-admin ping -u "$MYSQL_USER" \
 if [ ! -f "/var/www/html/wp-config.php" ]
     then
         wp core download \
+	    --allow-root \
             --path=/var/www/html
 
         wp config create \
+	    --allow-root \
             --dbname="$MYSQL_DATABASE" \
             --dbuser="$MYSQL_USER" \
             --dbpass="$MYSQL_PASSWORD" \
@@ -37,3 +39,4 @@ fi
 chown -R www-data:www-data /var/www/html
 
 exec php-fpm8.2 -F
+

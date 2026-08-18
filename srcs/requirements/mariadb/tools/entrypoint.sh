@@ -5,7 +5,7 @@ if [ ! -d "/var/lib/mysql/mysql" ]
     then
     echo "=> Intializing MariaDB... <="
     mariadb-install-db --datadir=/var/lib/mysql
-    mysql_safe --skip-networking &
+    mysqld_safe --skip-networking &
     pid="$!"
     until mariadb-admin ping --silent;
     do
@@ -24,4 +24,4 @@ delim
     wait "$pid"
 fi
 
-exec mysql_safe
+exec mysqld_safe
