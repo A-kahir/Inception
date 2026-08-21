@@ -12,7 +12,7 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
     restart:
-      unless-stopped
+      on-failure
 
   wordpress:
     build:
@@ -34,7 +34,7 @@ services:
     volumes:
       - wordpress_data:/var/www/html
     restart:
-      unless-stopped
+      on-failure
 
   nginx:
     build:
@@ -48,7 +48,7 @@ services:
     ports:
       - "443:443"
     restart:
-      unless-stopped
+      on-failure
 
 networks:
   inception_net:
@@ -68,4 +68,3 @@ volumes:
       type: none
       o: bind
       device: /home/akahir/data/wordpress
-

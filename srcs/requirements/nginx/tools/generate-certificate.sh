@@ -12,8 +12,8 @@ if [ ! -f /etc/nginx/ssl/server.crt ] || [ ! -f /etc/nginx/ssl/server.key ]
         openssl req \
             -new \
             -x509 \
-            -subj "/C=MA/ST=Morocco/L=Kouribga/O=42/OU=Inception/CN=localhost"\
             -key /etc/nginx/ssl/server.key \
             -out /etc/nginx/ssl/server.crt \
-            -days 365
+            -days 365 \
+            -subj "/C=MA/ST=Morocco/L=Kouribga/O=42/OU=Inception/CN=localhost"
 fi
