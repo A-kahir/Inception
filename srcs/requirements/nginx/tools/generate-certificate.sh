@@ -15,5 +15,5 @@ if [ ! -f /etc/nginx/ssl/server.crt ] || [ ! -f /etc/nginx/ssl/server.key ]
             -key /etc/nginx/ssl/server.key \
             -out /etc/nginx/ssl/server.crt \
             -days 365 \
-            -subj "/C=MA/ST=Morocco/L=Kouribga/O=42/OU=Inception/CN=localhost"
+            -subj "/C=MA/ST=Morocco/L=Kouribga/O=42/OU=Inception/CN=akahir.42.fr"
 fi
