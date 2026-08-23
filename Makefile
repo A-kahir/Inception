@@ -18,4 +18,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: all build up down stop start clean fclean re
+.PHONY: all build up clean fclean re
