@@ -11,21 +11,25 @@ This document explains how a developer can set up, build, and work on the Incept
 ### Configuration files
 The project's configuration lives entirely under `srcs`:
 ```
-srcs/
+.
 ├── docker-compose.yml
-├── .env
-└── requirements/
-    ├── mariadb/
+└── requirements
+    ├── mariadb
     │   ├── Dockerfile
-    │   ├── conf/
-    │   └── tools/
-    ├── nginx/
-    │   ├── Dockerfile
-    │   ├── conf/
-    │   └── tools/
-    └── wordpress/
+    │   └── tools
+    │       └── entrypoint.sh
+    ├── nginx
+    │   ├── conf
+    │   │   └── nginx.conf
+    │   ├── dockerfile
+    │   └── tools
+    │       ├── entrypoint.sh
+    │       └── generate-certificate.sh
+    └── wordpress
         ├── Dockerfile
-        └── tools/
+        └── tools
+            └── entrypoint.sh
+
 ```
 
 Before starting the project, create and fill in `srcs/.env` with the required variables:

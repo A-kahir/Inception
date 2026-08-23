@@ -17,18 +17,6 @@ All actions are done from the root of the repository, on the virtual machine.
   ```
   make
   ```
-- Stop the containers without removing them:
-  ```
-  make stop
-  ```
-- Start containers that were previously stopped:
-  ```
-  make start
-  ```
-- Stop and remove the containers:
-  ```
-  make down
-  ```
 - Remove containers, images, and volumes entirely, then rebuild from scratch:
   ```
   make re

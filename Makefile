@@ -9,15 +9,6 @@ build:
 up:
 	$(COMPOSE) up -d
 
-down:
-	$(COMPOSE) down
-
-stop:
-	$(COMPOSE) stop
-
-start:
-	$(COMPOSE) start
-
 clean:
 	$(COMPOSE) down
 

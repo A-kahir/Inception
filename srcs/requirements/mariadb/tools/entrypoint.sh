@@ -24,4 +24,4 @@ delim
     wait "$pid"
 fi
 
-exec mysqld_safe
+exec mysqld_safe --port=3306

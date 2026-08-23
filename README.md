@@ -37,8 +37,6 @@ This builds every Docker image and starts the containers in detached mode.
 ### Useful commands
 
 - `make up`- start the containers without rebuilding.
-- `make down`- stop and remove the containers.
-- `make stop` / `make start`- stop or start the containers without removing them.
 - `make clean`- stop and remove the containers.
 - `make fclean`- remove containers, volumes, images, and prune the Docker system.
 - `make re`- full clean followed by a fresh build and start.
