@@ -11,7 +11,7 @@ until mariadb-admin ping -u "$MYSQL_USER" \
         sleep 1
     done
 
-if [ ! -f "/var/www/html/wp-config.php" ]
+if [ ! -f "/var/www/html/index.php" ] || [ ! -f "/var/www/html/wp-config.php" ]
     then
         wp core download \
 	    --allow-root \
