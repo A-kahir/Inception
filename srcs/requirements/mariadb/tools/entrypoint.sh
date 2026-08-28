@@ -35,7 +35,7 @@ EOF
     wait "$pid"
 fi
 
-exec mysqld_safe \
+exec mariadbd \
     --datadir=/var/lib/mysql \
     --bind-address=0.0.0.0 \
     --port=3306

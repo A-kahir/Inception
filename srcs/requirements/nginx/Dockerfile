@@ -1,10 +1,8 @@
 FROM debian:12
 
-RUN apt-get update && apt-get install -y \
-    nginx \
-    openssl \
-    && rm -f /var/www/html/index.html \
-    && rm -f /var/www/html/index.nginx-debian.html
+RUN apt-get update && apt-get install -y nginx openssl \
+    && rm -rf /var/www/html/* \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY tools/generate-certificate.sh /generate-certificate.sh
 COPY tools/entrypoint.sh /entrypoint.sh
