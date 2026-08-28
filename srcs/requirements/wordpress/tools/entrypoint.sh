@@ -1,18 +1,16 @@
 #!/bin/bash
-set -e
 
+set -e
 until mariadb-admin ping \
+    -h mariadb \
     -u "$MYSQL_USER" \
     -p"$MYSQL_PASSWORD" \
-    -h mariadb \
-    -P 3306 \
     --silent
 do
     sleep 1
 done
 
 if [ ! -f "/var/www/html/wp-config.php" ]; then
-
     wp core download \
         --allow-root \
         --path=/var/www/html
