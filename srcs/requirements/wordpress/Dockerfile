@@ -5,10 +5,7 @@ RUN apt-get update && apt-get install -y \
     php-fpm \
     php-mysql \
     curl \
-    mariadb-client \
-    && rm -f /var/www/html/index.html \
-    && rm -f /var/www/html/index.nginx-debian.html \
-    && rm -rf /var/lib/apt/lists/*
+    mariadb-client
 
 RUN sed -i 's|^listen = .*|listen = 9000|' \
     /etc/php/8.2/fpm/pool.d/www.conf

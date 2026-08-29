@@ -1,16 +1,25 @@
 #!/bin/bash
 
 set -e
+
+echo "Waiting for MariaDB..."
+
 until mariadb-admin ping \
     -h mariadb \
-    -u "$MYSQL_USER" \
+    -P 3306 \
+    -u"$MYSQL_USER" \
     -p"$MYSQL_PASSWORD" \
     --silent
 do
-    sleep 1
+    echo "MariaDB is not ready yet..."
+    sleep 2
 done
 
+echo "MariaDB is ready!"
+
 if [ ! -f "/var/www/html/wp-config.php" ]; then
+    echo "Installing WordPress..."
+
     wp core download \
         --allow-root \
         --path=/var/www/html
@@ -31,6 +40,8 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
         --admin_password="$WP_ADMIN_PASSWORD" \
         --admin_email="$WP_ADMIN_EMAIL" \
         --path=/var/www/html
+
+    echo "WordPress installed successfully!"
 fi
 
 chown -R www-data:www-data /var/www/html
